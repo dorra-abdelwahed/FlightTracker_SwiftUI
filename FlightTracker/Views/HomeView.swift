@@ -11,11 +11,32 @@ import MapKit
 struct HomeView: View {
     
     @StateObject var locationManager = LocationManager()
-    @State var tracking:MapUserTrackingMode = .follow
+    @StateObject var viewModel = HomeViewModel()
+    
    
     var body: some View {
-        Map(coordinateRegion: $locationManager.region, interactionModes: .all, showsUserLocation: true,userTrackingMode: $tracking)
+        
+        Map(coordinateRegion: $locationManager.region, interactionModes: .all, annotationItems: viewModel.locations){ location in
+            MapAnnotation(coordinate: location.coordinate) {
+                
+                Image(systemName: "airplane")
+                    .foregroundColor(.yellow)
+                    .rotationEffect(Angle(degrees: location.direction))
+                    .onTapGesture {
+                                print("Tapped on \(location.name)")
+                            }
+                    
+                    
+
+            }
+        }
+        .onAppear {
+            Task{
+                await viewModel.fetchFlights()
+            }
+        }
             .ignoresSafeArea()
+           
     }
 }
 

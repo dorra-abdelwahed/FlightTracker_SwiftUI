@@ -7,14 +7,23 @@
 
 import Foundation
 import SwiftUI
+import MapKit
+import Combine
 
 class HomeViewModel: ObservableObject{
     
     private(set) var flights: [Flights.Data] = []
     
+    @Published var region = MKCoordinateRegion()
+    let locationManager = LocationManager()
+    var cancellables = Set<AnyCancellable>()
+    
+    @Published var locations: [Location] = []
+  
+    
     func fetchFlights() async {
         
-        let url_string = "\(baseURL)?access_key=\(accessKey)"
+        let url_string = "\(baseURL)?access_key=\(accessKey)&limit=100"
         
         guard let url = URL(string: url_string) else {fatalError("missing URL")}
         
@@ -29,7 +38,13 @@ class HomeViewModel: ObservableObject{
             let decodedData = try decoder.decode(Flights.self, from: data)
             
             self.flights = decodedData.data
-            print(self.flights)
+            
+            DispatchQueue.main.async {
+                
+                self.locations = self.flights.map{
+                    Location(name: $0.flight.icaoNumber, coordinate: CLLocationCoordinate2D(latitude: $0.geography.latitude, longitude: $0.geography.longitude),direction: $0.geography.direction)
+                }
+            }
             
         } catch {
             print("Error fetching trivia: \(error)")

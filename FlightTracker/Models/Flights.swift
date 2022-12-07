@@ -33,7 +33,7 @@ struct Flight: Codable{
 struct Geography: Codable{
     
     let altitude: Double
-    let direction: Int
+    let direction: Double
     let latitude: Double
     let longitude: Double
     
