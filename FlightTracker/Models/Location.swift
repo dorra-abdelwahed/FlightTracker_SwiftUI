@@ -9,8 +9,13 @@ import Foundation
 import MapKit
 
 struct Location: Identifiable{
+    
     let id = UUID()
     let name: String
     let coordinate: CLLocationCoordinate2D
     let direction: Double
+    let status: String
+    let arrival: String
+    let depart: String
+    
 }

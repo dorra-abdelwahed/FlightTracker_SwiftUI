@@ -19,6 +19,8 @@ struct Flights: Codable{
             UUID()
         }
         let status: String
+        let arrival: Airport
+        let departure: Airport
         let flight: Flight
         let geography: Geography
     }
@@ -38,3 +40,8 @@ struct Geography: Codable{
     let longitude: Double
     
 }
+
+struct Airport: Codable{
+    let iataCode: String
+}
+

@@ -11,11 +11,12 @@
 		8B92AB5E2940DB090088BD68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B92AB5D2940DB090088BD68 /* Assets.xcassets */; };
 		8B92AB612940DB090088BD68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B92AB602940DB090088BD68 /* Preview Assets.xcassets */; };
 		8B92AB692940DBA20088BD68 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB682940DBA20088BD68 /* Constants.swift */; };
-		8B92AB6C2940DBDA0088BD68 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB6B2940DBDA0088BD68 /* HomeView.swift */; };
+		8B92AB6C2940DBDA0088BD68 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB6B2940DBDA0088BD68 /* MapView.swift */; };
 		8B92AB722940DC200088BD68 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB712940DC200088BD68 /* LocationManager.swift */; };
 		8B92AB742940DC440088BD68 /* Flights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB732940DC440088BD68 /* Flights.swift */; };
 		8B92AB762940DC4B0088BD68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB752940DC4B0088BD68 /* Location.swift */; };
 		8B92AB782940DC710088BD68 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB772940DC710088BD68 /* HomeViewModel.swift */; };
+		8BA624C72941480300F00211 /* PlaneDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA624C62941480300F00211 /* PlaneDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +25,12 @@
 		8B92AB5D2940DB090088BD68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B92AB602940DB090088BD68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B92AB682940DBA20088BD68 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8B92AB6B2940DBDA0088BD68 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8B92AB6B2940DBDA0088BD68 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8B92AB712940DC200088BD68 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8B92AB732940DC440088BD68 /* Flights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flights.swift; sourceTree = "<group>"; };
 		8B92AB752940DC4B0088BD68 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8B92AB772940DC710088BD68 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8BA624C62941480300F00211 /* PlaneDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,8 @@
 		8B92AB6D2940DBE90088BD68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8B92AB6B2940DBDA0088BD68 /* HomeView.swift */,
+				8B92AB6B2940DBDA0088BD68 /* MapView.swift */,
+				8BA624C62941480300F00211 /* PlaneDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,7 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B92AB722940DC200088BD68 /* LocationManager.swift in Sources */,
-				8B92AB6C2940DBDA0088BD68 /* HomeView.swift in Sources */,
+				8B92AB6C2940DBDA0088BD68 /* MapView.swift in Sources */,
+				8BA624C72941480300F00211 /* PlaneDetailsView.swift in Sources */,
 				8B92AB782940DC710088BD68 /* HomeViewModel.swift in Sources */,
 				8B92AB742940DC440088BD68 /* Flights.swift in Sources */,
 				8B92AB5A2940DB070088BD68 /* FlightTrackerApp.swift in Sources */,

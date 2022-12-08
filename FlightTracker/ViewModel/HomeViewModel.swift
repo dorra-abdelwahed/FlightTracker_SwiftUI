@@ -15,11 +15,17 @@ class HomeViewModel: ObservableObject{
     private(set) var flights: [Flights.Data] = []
     
     @Published var region = MKCoordinateRegion()
+    @Published var selectedLocation: Location?
+    
     let locationManager = LocationManager()
     var cancellables = Set<AnyCancellable>()
     
     @Published var locations: [Location] = []
   
+    
+    func selectLocation(plane: Location){
+        selectedLocation = plane
+    }
     
     func fetchFlights() async {
         
@@ -42,7 +48,7 @@ class HomeViewModel: ObservableObject{
             DispatchQueue.main.async {
                 
                 self.locations = self.flights.map{
-                    Location(name: $0.flight.icaoNumber, coordinate: CLLocationCoordinate2D(latitude: $0.geography.latitude, longitude: $0.geography.longitude),direction: $0.geography.direction)
+                    Location(name: $0.flight.icaoNumber, coordinate: CLLocationCoordinate2D(latitude: $0.geography.latitude, longitude: $0.geography.longitude),direction: $0.geography.direction,status: $0.status, arrival: $0.arrival.iataCode, depart: $0.departure.iataCode)
                 }
             }
             
