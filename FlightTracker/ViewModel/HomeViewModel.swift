@@ -5,29 +5,56 @@
 //  Created by Dorra Ben Abdelwahed on 7/12/2022.
 //
 
-import Foundation
 import SwiftUI
-import MapKit
-import Combine
+import CoreData
+
 
 class HomeViewModel: ObservableObject{
     
-    private(set) var flights: [Flights.Data] = []
+    @Published var flights: [Flights.Data] = []
+    @Published var selectedFlight: Flights.Data?
+    private var timer: Timer?
+ 
     
-    @Published var region = MKCoordinateRegion()
-    @Published var selectedLocation: Location?
+    init() {
+        
+           ///API Data is being updated every 10 minutes
+           timer = Timer.scheduledTimer(withTimeInterval: 10*60, repeats: true) { _ in
+               Task {
+                   self.fetchFlights(context:)
+               }
+           }
+       }
     
-    let locationManager = LocationManager()
-    var cancellables = Set<AnyCancellable>()
-    
-    @Published var locations: [Location] = []
-  
-    
-    func selectLocation(plane: Location){
-        selectedLocation = plane
+    //Saving Remote Data to CoreData
+    func saveData(context: NSManagedObjectContext){
+        
+        flights.forEach { data in
+            
+            let entity = FlightsModel(context: context)
+            entity.name = data.flight.icaoNumber
+            entity.status = data.status
+            entity.latitude = data.geography.latitude
+            entity.longitude = data.geography.longitude
+            entity.arrival = data.arrival.iataCode
+            entity.depart = data.departure.iataCode
+            
+        }
+        
+        do{
+            try context.save()
+            print("success")
+        }catch{
+            print(error.localizedDescription)
+        }
     }
     
-    func fetchFlights() async {
+    func selectFlights(flight: Flights.Data){
+        selectedFlight = flight
+    }
+    
+    //fetched api data
+    func fetchFlights(context: NSManagedObjectContext) async {
         
         let url_string = "\(baseURL)?access_key=\(accessKey)&limit=100"
         
@@ -43,17 +70,15 @@ class HomeViewModel: ObservableObject{
             let decoder = JSONDecoder()
             let decodedData = try decoder.decode(Flights.self, from: data)
             
-            self.flights = decodedData.data
             
             DispatchQueue.main.async {
                 
-                self.locations = self.flights.map{
-                    Location(name: $0.flight.icaoNumber, coordinate: CLLocationCoordinate2D(latitude: $0.geography.latitude, longitude: $0.geography.longitude),direction: $0.geography.direction,status: $0.status, arrival: $0.arrival.iataCode, depart: $0.departure.iataCode)
-                }
+                self.flights = decodedData.data
+                self.saveData(context: context)
             }
             
         } catch {
-            print("Error fetching trivia: \(error)")
+            print("Error fetching: \(error)")
         }
         
     }

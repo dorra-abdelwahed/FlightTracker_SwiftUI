@@ -12,11 +12,11 @@ class LocationManager: NSObject, ObservableObject{
     
     private let locationManager = CLLocationManager()
     
-    @Published var region = MKCoordinateRegion()
+    @Published var region: MKCoordinateRegion = MKCoordinateRegion.defaultRegion()
     
     override init() {
         super.init()
-       
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -29,7 +29,11 @@ extension LocationManager: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.first, !locations.isEmpty else {return}
-        region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 5.0, longitudeDelta: 5.0))
+        
+        
+        self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 5.0, longitudeDelta: 5.0))
+        
+        
         locationManager.stopUpdatingLocation()
         
     }

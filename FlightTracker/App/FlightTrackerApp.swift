@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct FlightTrackerApp: App {
+    
+    @StateObject private var manager: DataManager = DataManager()
+
     var body: some Scene {
         WindowGroup {
-            MapView()
+            
+            HomeView()
+                .environmentObject(manager)
+                .environment(\.managedObjectContext, manager.container.viewContext)
         }
     }
 }
