@@ -19,11 +19,11 @@ class HomeViewModel: ObservableObject{
     init() {
         
            ///API Data is being updated every 10 minutes
-           timer = Timer.scheduledTimer(withTimeInterval: 10*60, repeats: true) { _ in
-               Task {
-                   self.fetchFlights(context:)
-               }
-           }
+//           timer = Timer.scheduledTimer(withTimeInterval: 10*60, repeats: true) { _ in
+//               Task {
+//                   self.fetchFlights(context:)
+//               }
+//           }
        }
     
     //Saving Remote Data to CoreData
@@ -38,6 +38,7 @@ class HomeViewModel: ObservableObject{
             entity.longitude = data.geography.longitude
             entity.arrival = data.arrival.iataCode
             entity.depart = data.departure.iataCode
+            entity.direction = data.geography.direction
             
         }
         

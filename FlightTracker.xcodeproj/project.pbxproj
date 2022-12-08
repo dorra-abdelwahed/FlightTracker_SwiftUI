@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B5238552942520F0087FB00 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5238542942520F0087FB00 /* NetworkStatus.swift */; };
 		8B523857294253DE0087FB00 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B523856294253DE0087FB00 /* NetworkManager.swift */; };
 		8B52385A29425A3A0087FB00 /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52385929425A3A0087FB00 /* MKCoordinateRegion.swift */; };
 		8B92AB5A2940DB070088BD68 /* FlightTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B92AB592940DB070088BD68 /* FlightTrackerApp.swift */; };
@@ -24,7 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B5238542942520F0087FB00 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		8B523856294253DE0087FB00 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8B52385929425A3A0087FB00 /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
 		8B92AB562940DB070088BD68 /* FlightTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				8B92AB732940DC440088BD68 /* Flights.swift */,
-				8B5238542942520F0087FB00 /* NetworkStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,7 +229,6 @@
 				8B92AB742940DC440088BD68 /* Flights.swift in Sources */,
 				8BA624CE2942001800F00211 /* Model.xcdatamodeld in Sources */,
 				8B92AB5A2940DB070088BD68 /* FlightTrackerApp.swift in Sources */,
-				8B5238552942520F0087FB00 /* NetworkStatus.swift in Sources */,
 				8B92AB692940DBA20088BD68 /* Constants.swift in Sources */,
 				8B52385A29425A3A0087FB00 /* MKCoordinateRegion.swift in Sources */,
 			);

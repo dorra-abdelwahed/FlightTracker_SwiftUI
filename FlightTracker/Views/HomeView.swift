@@ -15,9 +15,9 @@ struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     @ObservedObject var networkManager = NetworkManager()
     
-    @State var isShowing = false
+    @State private var isShowing = false
     @State private var showingAlert = false
-    
+   
     @EnvironmentObject var manager: DataManager
     @Environment(\.managedObjectContext) private var context
     
@@ -29,30 +29,29 @@ struct HomeView: View {
     var body: some View {
         
         ZStack{
+            
             if !networkManager.isConnected {
                 
-                
-                ProgressView()
+                    Map(coordinateRegion: $locationManager.region, interactionModes: .all, annotationItems: results){ flight in
+                        
+                        MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: flight.latitude, longitude: flight.longitude)) {
+                            
+                            
+                            Image(systemName: "airplane")
+                                .foregroundColor(.yellow)
+                                .rotationEffect(Angle(degrees: flight.direction))
+                            
+                            
+                            
+                        }
+                        
+                    }
                     .onAppear{
                         showingAlert = true
                     }
-                
-                Map(coordinateRegion: $locationManager.region, interactionModes: .all, annotationItems: results){ flight in
                     
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: flight.latitude, longitude: flight.longitude)) {
-                        
-                        
-                        Image(systemName: "airplane")
-                            .foregroundColor(.yellow)
-                            .rotationEffect(Angle(degrees: flight.direction))
-                        
-                        
-                        
-                    }
-                    
-                    
-                }
             }
+            
             else {
                 
                 Map(coordinateRegion: $locationManager.region, interactionModes: .all, annotationItems: viewModel.flights){ flight in
